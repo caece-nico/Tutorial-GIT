@@ -8,6 +8,7 @@ Este tema tiene un índice a parte por la complejidad  del mismo.
     * [Desplazamiento por ramas](#deplazamiento-por-ramas)
     * [Ramas BRANCH y SWITCH](#ramas-branch-y-switch)
 3. [Ejemplo Practico](#3.-ejemplo-practico)
+4. [Ejemplo con conflictos](#4.-ejemplo-con-conflictos)
 
 
 ## 1. Introduccion a Branches
@@ -264,3 +265,35 @@ Con este merge vemos que todo lo que estaba en __logeo__ pasó a __main__  crean
 ![](img/git_branch_logeo_merge_main.png)
 
 Pero en logeo solo tendrá los cambios hasta el último commit y nada posterior.
+
+
+## 4. Ejemplo con conflictos
+
+En este ejemplo vamos a simular un conflicto.
+Ahora despues de haber hecho merge de lo que habia en __logeo__ con __main__ hacemos un cambio en __helloworld.py__ del main 
+
+![](img/git_branch_conflicto_main_1.png)
+
+Vemos que en __main__ hay un cambio que no vamos a tener en __logeo__
+
+Ahora desde __logeo__ agregamos un cambio al mismo archivo y tocamos la misma linea de codigo que tocamos en __main__ y hacemos commit
+
+![](img/git_branch_conflicto_logeo_1.png)
+
+Ahora __logeo__ tiene un commit que solo está en logeo y __main__ un commit que solo está en __main__ pero ambos tocaron el mismo archivo misma linea. Hacemos un merge en __main__
+
+```bash
+git merge logeo
+```
+
+nos devuelve esto indicando en que lineas hay un conflicto.
+
+![](img/git_branch_conflicto_merge_1.png)
+
+El problema con esto es que GIT no sabe cual es la versión correcta. Entonces debemos decidir con cual nos quedamos.
+
+Debemos decidir que version es la correcta.
+
+cuando lo decidimos hacemos git add git commit y listo.
+
+![](img/git_branch_conflicto_solucion.png)
