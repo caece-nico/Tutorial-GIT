@@ -9,6 +9,7 @@ Este tema tiene un índice a parte por la complejidad  del mismo.
     * [Ramas BRANCH y SWITCH](#ramas-branch-y-switch)
 3. [Ejemplo Practico](#3.-ejemplo-practico)
 4. [Ejemplo con conflictos](#4.-ejemplo-con-conflictos)
+5. [Stash](#5.-stash)
 
 
 ## 1. Introduccion a Branches
@@ -160,6 +161,12 @@ Ahora estamos en otra rama u otro flujo. El HEAD -> login
 
 Creamos un nuevo archivo en esta rama. Este archivo solo estará disponible en loging pero no en la master.
 
+Para buscar diferencias entre ramas podemos usar 
+
+```bash
+git diff rama
+```
+
 
 ## 3. Ejemplo practico
 
@@ -297,3 +304,37 @@ Debemos decidir que version es la correcta.
 cuando lo decidimos hacemos git add git commit y listo.
 
 ![](img/git_branch_conflicto_solucion.png)
+
+
+## 5. Stash
+
+Estamos trabajando en nuestra rama __logeo__ pero no sabemos si queremos hacer un commit de lo que estamos haciendo, es un desarrollo a medias.
+De repente nos llaman y nos piden que resolvamos algo que está en la rama __main__ pero no podemos movernos entre ramas sin hacer commit porque perdemos los datos.
+
+Un ejemplo
+
+![](img/git_stash_logeo_1.png)
+
+Una vez que terminamos de hacer lo nuestro en la otra rama , volvemos a __logeo__ pero vemos que lo que teniamos en stash desaparece.
+Para ver lo que dejamos en stash hacemos 
+
+```bash
+git stash list
+git stash pop 
+```
+
+El comando trae una lista de todo lo que está en stash y luego lo último que hayamos dejado.
+
+Busco mi fichero lo modifico y luego le hago un git add y git commit.
+
+y finalmente desde la rama __main__ 
+
+```bash
+git merge logeo
+```
+
+__¿Cómo eliminoun stash?__
+
+```bash
+git stash drop
+```
