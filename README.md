@@ -13,9 +13,10 @@
     * [Agregamos un segundo fichero](#agregamos-un-segundo-fichero)
     * [Git checkout y Reset](#git-checkout-y-reset)
 3. [Ramas](#3.-ramas)
-    *
-3. [GIT Alias](#3.-git-alias)
-4. [GIT Ignore](#4.-git-ignore)
+    * [Introduccion Ramas](#Introduccion-git-diff)
+    * [Desplazamiento por ramas](#deplazamiento-por-ramoas)
+4. [GIT Alias](#4.-git-alias)
+5. [GIT Ignore](#5.-git-ignore)
 
 
 
@@ -124,6 +125,7 @@ Tres comandos importantes de GIT son
 |commit|Para confirmar los cambios|
 |checkout|Para situarnos en un punto concreto de un ficheto que no fue commiteado|
 |reset|Para volver a una foto anterior|
+|git diff|Muestra diferencias entre commits|
 
 
 ### Git STATUS
@@ -235,8 +237,68 @@ El resultado es, volvimos a la versión anterior del archivo, que estaba en el �
 
 ???
 
+## 3. RAMAS
 
-## 3. GIT alias
+### Introduccion GIT DIFF
+
+Aveces puede ocurrir que estamos trabajando en un fichero y no estamos seguros si lo que estamos por agregar al stage es correcto o no. Y antes de hacer el commit queremos ver el cambio con respecto a la versión original. Para esto existe el comando __git diff__
+
+Para poder trabajar con el git diff no debemos tener el último cambio en el stage. (SIN GIT ADD)
+
+* Hacemos un cambio en el fichero helloWorld.py
+
+```bach
+git diff
+```
+![git diff](/img/git_diff_status.png)
+
+Vemos la versión anterior y la nueva en verde. Este cambio aún no ha sido confirmado en el __stage__
+
+__¿Qué pasaria si queremos movernos a otro commit anterior sin antes haber guardado este utimo cambio?
+
+Al hacer un checkout veriamos esto.
+
+![checkout](/img/checkout_problema.png)
+
+DOnde se ve que nos pide que antes commitemos el cambio en el fichero helloWorld.py
+
+
+**SOLUCION**
+
+1. Hacemos un git checkout al fichero helloWorld.py para dejarlo como estaba antes.
+
+__Elmina el cambio en el mensaje__
+
+2. Ahora queremos volver al commit donde solo teniamos el fichero helloWorld.py
+
+```bash
+git checkout c84cb60b702e0afce4d51f9e150ff6b27090d273
+```
+
+Ahora el HEAD se mueve al commit incial y elimina el archivo hellogit2 que habiamos creado.
+
+![](/img/checkout_final.png)
+
+
+```bash
+git checkout HEAD
+```
+
+__¿Cómo deshacemos esto?__
+
+desde git tree veo todos los commits.
+
+```bash
+ git checkout 2e25d5a
+```
+Este es el ultimo commit donde tenia todos los archivos, si lo ejecuto vuelvo a tener todo como estaba antes.
+
+
+### deplazamiento por ramas
+
+En el ejemplo anterior siempre nos movimos en la rama __main__ 
+
+## 4. GIT alias
 
 Los alias sirven para guardar comando dentro del archivo de configuraciones y no tener que escribir mucho código.
 
@@ -255,7 +317,7 @@ git tree
 ![](/img/git_tree_log.png)
 
 
-## 4. GIT Ignore
+## 5. GIT Ignore
 
 Se un fichero que se coloca en el directorio del repositorio que indica lo que no queremos que se suba al commit.
 
