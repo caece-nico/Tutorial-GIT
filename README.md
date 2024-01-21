@@ -15,7 +15,9 @@
 3. [Ramas](#3.-ramas)
     * [Introduccion Ramas](#Introduccion-git-diff)
     * [Hard Reset](#hard-reset)
-    * [Desplazamiento por ramas](#deplazamiento-por-ramoas)
+    * [TAGS](#tags)
+    * [Desplazamiento por ramas](#deplazamiento-por-ramas)
+    * [Ramas BRANCH y SWITCH](#ramas-branch-y-switch)
 4. [GIT Alias](#4.-git-alias)
 5. [GIT Ignore](#5.-git-ignore)
 
@@ -321,6 +323,34 @@ git reflog
 git checkout 8b98dae
 ```
 
+### TAGS
+
+Siginfica etiquetar un commit. Esto se utiliza cuando estamos haciendo referencias a que son puntos importantes. Generalmente son las versiones.
+
+```
+Todo lo que subí hasta este punto es la version 1.1
+```
+
+![](/img/git_tag.png)
+
+Ahora mi punto en el tiempo está en mi __git tag__
+
+* Si agregamos un nuevo fichero y le hacemos commit, el head y el main se mueven pero el tag se ha quedado en el pasado.
+
+![](/img/after_git_commit_tag.png)
+
+Puedo ver todos mis tags.
+
+```bash
+git tag
+```
+
+Vuelvo a un punto concreto, hago lo que tengo que hacer y luego vuelvo a lo nuevo.
+
+```bash
+git checkout clase_1
+```
+
 ### deplazamiento por ramas
 
 En el ejemplo anterior siempre nos movimos en la rama __main__ 
@@ -335,7 +365,22 @@ Para solucionar esto volvemos a hacer un get reset al mismo has.
 ![](/img/after_hard_reselt_main.png)
 
 
+## Ramas BRANCH y SWITCH
 
+```
+Una rama es un concepto que necesitamos crear algo que no tiene sentido trabajarlo en la rama main.
+Quiero empezar en una funcionalidad que no se cuendo la voy a terminar y cuando la haya terminado veo comola integro en la __main__
+```
+
+```bash
+git branch login
+```
+
+Esto me crea una rama llamada login pero sigo en la rama __main__, lo se porque es done apunta el main.
+
+```bash
+git switch login
+```
 
 ## 4. GIT alias
 
