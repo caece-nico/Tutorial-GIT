@@ -8,7 +8,7 @@
 
 ## Tutorial de git
 
-![wwww.git.org](img\pic_git.png)
+![wwww.git.org](/img/pic_git.png)
 
 ````
 Es un sistema de control de versiones distribuido, no depende de un único sitio.
