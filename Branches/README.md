@@ -7,7 +7,7 @@ Este tema tiene un índice a parte por la complejidad  del mismo.
     * [TAGS](#tags)
     * [Desplazamiento por ramas](#deplazamiento-por-ramas)
     * [Ramas BRANCH y SWITCH](#ramas-branch-y-switch)
-3 [Ejemplo Practico](#3.-ejemplo-practico)
+3. [Ejemplo Practico](#3.-ejemplo-practico)
 
 
 ## 1. Introduccion a Branches
