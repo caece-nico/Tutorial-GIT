@@ -24,7 +24,7 @@ Para poder trabajar con el git diff no debemos tener el último cambio en el sta
 ```bach
 git diff
 ```
-![git diff](/img/git_diff_status.png)
+![git diff](img/git_diff_status.png)
 
 Vemos la versión anterior y la nueva en verde. Este cambio aún no ha sido confirmado en el __stage__
 
@@ -32,7 +32,7 @@ __¿Qué pasaria si queremos movernos a otro commit anterior sin antes haber gua
 
 Al hacer un checkout veriamos esto.
 
-![checkout](/img/checkout_problema.png)
+![checkout](img/checkout_problema.png)
 
 DOnde se ve que nos pide que antes commitemos el cambio en el fichero helloWorld.py
 
@@ -51,7 +51,7 @@ git checkout c84cb60b702e0afce4d51f9e150ff6b27090d273
 
 Ahora el HEAD se mueve al commit incial y elimina el archivo hellogit2 que habiamos creado.
 
-![](/img/checkout_final.png)
+![](img/checkout_final.png)
 
 
 ```bash
@@ -75,7 +75,7 @@ Ejemplo.
 
 Hoy estamos áca, tenemos tres commits y la cabecera está al final.
 
-![](/img/hard_reset.png)
+![](img/hard_reset.png)
 
 Sabemos que todo lo que hicimos en los dos ultimos commits está mal y solo queremos tener el primero.
 
@@ -84,7 +84,7 @@ git reset --hard c84cb60
 ```
 Cambia la cabecera
 
-![](/img/after_hard_reset.png)
+![](img/after_hard_reset.png)
 
 Pero ahroa me doy cuenta que el commit del medio lo necesitaba. __¿Cómo lo recupero?__
 
@@ -101,13 +101,13 @@ Siginfica etiquetar un commit. Esto se utiliza cuando estamos haciendo referenci
 Todo lo que subí hasta este punto es la version 1.1
 ```
 
-![](/img/git_tag.png)
+![](img/git_tag.png)
 
 Ahora mi punto en el tiempo está en mi __git tag__
 
 * Si agregamos un nuevo fichero y le hacemos commit, el head y el main se mueven pero el tag se ha quedado en el pasado.
 
-![](/img/after_git_commit_tag.png)
+![](img/after_git_commit_tag.png)
 
 Puedo ver todos mis tags.
 
@@ -127,12 +127,12 @@ En el ejemplo anterior siempre nos movimos en la rama __main__
 
 Ahora recuperamos el archivo hellogit2.py
 
-![](/img/afterhard_reset_checkout.png)
+![](img/afterhard_reset_checkout.png)
 
 Ahora la cabeza y el main no apuntan al mismo lugar,
 Para solucionar esto volvemos a hacer un get reset al mismo has.
 
-![](/img/after_hard_reselt_main.png)
+![](img/after_hard_reselt_main.png)
 
 
 ## Ramas BRANCH y SWITCH
@@ -154,6 +154,6 @@ git switch login
 
 Ahora estamos en otra rama u otro flujo. El HEAD -> login
 
-![](/img/branch_loging.png) 
+![](img/branch_loging.png) 
 
 Creamos un nuevo archivo en esta rama. Este archivo solo estará disponible en loging pero no en la master.
