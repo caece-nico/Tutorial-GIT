@@ -338,3 +338,14 @@ __¿Cómo eliminoun stash?__
 ```bash
 git stash drop
 ```
+
+__El equipo que desarrolló el logeo ya terminó su trabajo__
+
+Ahora eliminamos la rama
+
+```bash
+git branch -d logeo
+```
+
+La rama no la vamos a ver en el flujo del proyecto pero todos los commits se puden recuperar en un __checkout__
+
