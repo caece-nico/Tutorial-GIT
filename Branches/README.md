@@ -7,6 +7,7 @@ Este tema tiene un índice a parte por la complejidad  del mismo.
     * [TAGS](#tags)
     * [Desplazamiento por ramas](#deplazamiento-por-ramas)
     * [Ramas BRANCH y SWITCH](#ramas-branch-y-switch)
+3 [Ejemplo Practico](#3.-ejemplo-practico)
 
 
 ## 1. Introduccion a Branches
@@ -157,3 +158,109 @@ Ahora estamos en otra rama u otro flujo. El HEAD -> login
 ![](img/branch_loging.png) 
 
 Creamos un nuevo archivo en esta rama. Este archivo solo estará disponible en loging pero no en la master.
+
+
+## 3. Ejemplo practico
+
+En este ejemplo práctico vamos a recrear un caso donde una rama main con 3 commits se le hace un branch para comenzar a trabajar en un sistema de logeo y de pagos de la app.
+Pero mientras que se está trabajando en este nuevo sistema los ING. de la rama main continuan su desarrollo haciendo que la rama __loging__ quede desactualizada, luego se une todo para terminar con una app funcionando.
+
+![](img/bracn_ejemplo.png)
+
+1. creamos el directorio del proyecto
+
+```bash
+mkdir mi_proyecto_ejemplo
+```
+
+2. Inicializamos una repositorio
+
+```bash
+git init .
+```
+
+3. Le cambiamos el nombre a la Master por __main__  y Creamos los tres commits iniciales en la __main__ 
+    * helloworld.py
+    * hellogit2.py
+    * modificamos uno de los dos .py
+
+```bash
+git branch -m main
+```
+
+![](img/commit_final_proyecto.png)
+
+Tenemos los tres commits desde los que queremos partir según el modelo.
+
+4. Ahora creamos una __branch__ para empezar a trabajar en el sistema de logeo.
+
+```bash
+git branch logeo
+```
+
+![](img/git_branch_logeo.png)
+
+Como resultado vemos que la __branch__ se creo en el commit al que apunta el **HEAD** y el **main**
+
+Esto quiere decir que estamos posicionados en un punto especifico de tiempo que es, el último commit.
+
+__Entonces tenemos una branch llamada logeo que ahora tiene el mismo contenido que la rama main__
+
+4.1 El equipo de ingenieros que desarrolla la rama __main__ sigue trabajando por su cuenta desarrollando una nueva funcioanlidad que será __frontend.py__ y nosotros al mismo tiempo trabajaremos en nuestra rama en la funcionalidad __logeo.py__ sin ver lo que hace el otro equipo.
+
+![](img/rama_logeo_1.png)
+
+En la rama logeo vemos lo mismo que en la rama __main__. 
+
+5. Creamos el fichero __logeo.py__ y lo agregamos al proyecto __solo en la rama logeo__
+
+**IMPORTANTE** En un primer momento el __archivo.py__ se va a ver reflejado en las dos ramas pero una vez que le hagamos commit solo lo veremos en la rama en la que se creo.
+
+![](img/git_branch_commit_1.png)
+
+Vemos que el commit está en la rama __logeo__.
+Si vamos a ver __main__ a VisualCode no vamos a ver este nuevo archivo.
+
+![](img/git_branch_main_commit_1.png)
+
+Aunque no se ve, estamos en la rama __main__ y los cambios hechos en __logeo__no se ven.
+
+6. El equipo de __main__ continua trabajando y no sabe nada de los cambios sobre logeo y crea un nuevo archivo __frontend.py__ y lo comitea en la __main__ 
+
+![](img/git_branch_commit_main_1.png)
+
+Ahora vemos que el __main__ y __Head__ pasan al nuevo commit y se genera una bifurcacion simular a la de nuestro diagrama donde la branch __logeo__ tiene un file que no está en __main__ y esta última tiene un file que no está en __logeo__
+
+7. Logeo sigue trabajando y crea el file __pagos.py__ ignorando cualquier cambio en __main__
+
+```bash
+git switch logeo
+```
+Al hacer un switch vemos el _main__está en el último commit pero el __head__ está en la branch __logeo__
+
+![](img/git_branch_switch_logeo_1.png)
+
+Creamos el archivo __pagos.py__
+
+Ahora vemos que a la branch __logeo__ se le agrega un nuevo commit que sigue la linea del commit anterior pero que no está en __main__
+
+![](img/git_branch_commit_logeo_pagos_1.png)
+
+
+8. Ahora tenemos un problema.
+__main__ tiene unos archivos y __logeo__ tiene otros y algunos son comunes, lo bueno es que estos archivos comunes no han cambiado.
+
+__¿Cómo hacemos un merge para que ambos repos enten en sincronia?__
+
+```bash
+git switch main
+git merge login
+```
+
+Vamos a la rama __main__, el __head__ se posicionada en esta rama y hacemos un __merge__ de la rama logeo para traernos no nuevo.
+
+Con este merge vemos que todo lo que estaba en __logeo__ pasó a __main__  creando el commit final que queda igual que nuestro diagrama.
+
+![](img/git_branch_logeo_merge_main.png)
+
+Pero en logeo solo tendrá los cambios hasta el último commit y nada posterior.
