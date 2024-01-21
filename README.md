@@ -14,6 +14,7 @@
     * [Git checkout y Reset](#git-checkout-y-reset)
 3. [Ramas](#3.-ramas)
     * [Introduccion Ramas](#Introduccion-git-diff)
+    * [Hard Reset](#hard-reset)
     * [Desplazamiento por ramas](#deplazamiento-por-ramoas)
 4. [GIT Alias](#4.-git-alias)
 5. [GIT Ignore](#5.-git-ignore)
@@ -126,6 +127,7 @@ Tres comandos importantes de GIT son
 |checkout|Para situarnos en un punto concreto de un ficheto que no fue commiteado|
 |reset|Para volver a una foto anterior|
 |git diff|Muestra diferencias entre commits|
+|hard reset|Permite eliminar commits y volver a un punto en el tiempo|
 
 
 ### Git STATUS
@@ -293,10 +295,47 @@ desde git tree veo todos los commits.
 ```
 Este es el ultimo commit donde tenia todos los archivos, si lo ejecuto vuelvo a tener todo como estaba antes.
 
+### Hard Reset
+
+Nos permite elminar commits y volver a un punto en el tiempo especifico.
+
+Ejemplo.
+
+Hoy estamos áca, tenemos tres commits y la cabecera está al final.
+
+![](/img/hard_reset.png)
+
+Sabemos que todo lo que hicimos en los dos ultimos commits está mal y solo queremos tener el primero.
+
+```bash
+git reset --hard c84cb60
+```
+Cambia la cabecera
+
+![](/img/after_hard_reset.png)
+
+Pero ahroa me doy cuenta que el commit del medio lo necesitaba. __¿Cómo lo recupero?__
+
+```bash
+git reflog
+git checkout 8b98dae
+```
 
 ### deplazamiento por ramas
 
 En el ejemplo anterior siempre nos movimos en la rama __main__ 
+
+Ahora recuperamos el archivo hellogit2.py
+
+![](/img/afterhard_reset_checkout.png)
+
+Ahora la cabeza y el main no apuntan al mismo lugar,
+Para solucionar esto volvemos a hacer un get reset al mismo has.
+
+![](/img/after_hard_reselt_main.png)
+
+
+
 
 ## 4. GIT alias
 
