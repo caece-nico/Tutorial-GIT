@@ -1,15 +1,21 @@
 # Tutorial-GIT
 
-1. [Tutorial de GIT](#tutorial-de-git)
+1. [Tutorial de GIT](#1.-tutorial-de-git)
     * [Git vs GitHub](#git-vs-github)
     * [Instalacion de Git](#instalacion-de-git)
     * [Comandos principales](#comandos-principales)
     * [Configurar GIT](#configurar-git)
-2. [Control de versiones](#control-de-versiones)
+2. [Control de versiones](#2.-control-de-versiones)
     * [Inicializacion de un directorio](#inicializacion-de-un-directorio)
     * [Ramas en GIT](#ramas-en-git)
     * [Commit y Status](#commit-y-status)
     * [Validar commit](#validar-commits)
+    * [Agregamos un segundo fichero](#agregamos-un-segundo-fichero)
+    * [Git checkout y Reset](#git-checkout-y-reset)
+3. [Ramas](#3.-ramas)
+    *
+3. [GIT Alias](#3.-git-alias)
+4. [GIT Ignore](#4.-git-ignore)
 
 
 
@@ -72,7 +78,7 @@ git config --global user.email "xxxxx@xxx.com
 Esto deberia actualizar el fichero anterior.
 
 
-## Control de versiones
+## 2. Control de versiones
 
 ## Inicializacion de un directorio
 
@@ -116,6 +122,8 @@ Tres comandos importantes de GIT son
 |status|Para ver que cambios hubo en el repositorio, muestra lo que no está trackeado|
 |add|Para agregar esos cambios al stash y poder seguirlos, es la base del versionado|
 |commit|Para confirmar los cambios|
+|checkout|Para situarnos en un punto concreto de un ficheto que no fue commiteado|
+|reset|Para volver a una foto anterior|
 
 
 ### Git STATUS
@@ -176,3 +184,84 @@ git log
 
 Vemos los datos asociados al commit, con nombre de usuario, fecha, **hash** y el mensaje.
 
+## Agregamos un segundo fichero
+
+Hasta ahora tenemos en la __master__ o __main__ una sola fortografia, del archivo __helloworld.py__
+
+Hacemos
+
+```
+git status
+git add hellogit2.py
+git commit "Se agrega nuevo hellogit2.py"
+```
+
+Ahora tenemos dos fotos de nuestra __master__
+
+![Segundo commit](/img/git_segundo_commit_log.png)
+
+En un diagrama se veria
+
+![Estado actual](/img/estado_actual_git_master.png)
+
+## Git CHECKOUT y RESET
+
+### GIT CHECKOUT
+
+Si queremos volver para atras a un cambio que aun no fué comiteado usamos cheackout.
+
+Ejemplo.
+
+Al fichero __hellogit2.py__ le agregamos unas lineas de codigo pero no le hacemos **add** ni **commit**.
+
+```bash
+git status
+```
+Ahora vemos que ya no tenemos un archivo nuevo, sinó que __git status__ indica que el archivo está en estado __modified__
+
+![git status 2](/img/git_modified_file.png)
+
+**Pero por algun motivo no queremos estos cambios, entonces hacemos un git checkout __FILE__ para revertirlo**
+
+
+```bash
+git checkout hellogit2.py
+```
+El resultado es, volvimos a la versión anterior del archivo, que estaba en el último commit. (Ultima fotografia de la rama)
+
+![git checkout](/img/git_checkout.png)
+
+### GIT RESET
+
+???
+
+
+## 3. GIT alias
+
+Los alias sirven para guardar comando dentro del archivo de configuraciones y no tener que escribir mucho código.
+
+```git
+git config --global alias.tree "log --graph --decorate --all --oneline"
+```
+
+**tree** es el nombre que le doy al alias.
+
+__¿Cómo lo uso?__
+
+```bash
+git tree
+```
+
+![](/img/git_tree_log.png)
+
+
+## 4. GIT Ignore
+
+Se un fichero que se coloca en el directorio del repositorio que indica lo que no queremos que se suba al commit.
+
+### Comandos
+
+|comando|descripcion|
+|-------|-----------|
+|**/xxx| Con ** lo que hacemos es ignorar todo archivo con el nombre xxx en cualquier carpeta|
+|/xx|Ignora el archivo xxx|
