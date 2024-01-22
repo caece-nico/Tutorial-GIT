@@ -8,6 +8,9 @@
     * [Seguridad con ssh](#Seguridad-con-ssh)
     * [Subir nuestro primer repo](#subir-nuestro-primer-repo)
     * [Push y Pull](#push-y-pull)
+    * [GitClone](#gitclone)
+    * [Ciclo-Colaborativo-Fork](#ciclo-colaborativo-fork)
+    * [PULL Request](#pull-request)
 
 
 # 1. Introducción
@@ -137,3 +140,55 @@ git pull -m #mensaje"
 
 __git fetch__ descarga el arbol de cambios pero sin bajar esos cambios
 __git pull__ baja los cambios.
+
+## GitClone
+
+Los uso para descargar todo el codigo cuando comienzo a trabajar en un proyecto.
+
+```bash
+git clone git@github.com:caece-nico/mi_repo_vacio.git
+```
+
+Esto nos trae todo lo que exista en el proyecto en GITHUB a mi repo local.
+__Es importante hacer esto dentro de un directorio unico para el nuevo proyecto__
+
+## Ciclo colaborativo Fork
+
+* Hago __git clone__ de un repo que no es el mio.
+
+```
+A este repo no le puedo hacer cambios, el push me diaria error.
+```
+
+Como en este proyecto no tengo permisos porque no es mi repo o no estoy como colaborador si quiero hacerle cambios __debo usar el flujo del fork__
+
+1. El fork nos permite hacer una copia del repovque queremos modificar pero en nuestro repo (Similar a un CLONE) 
+
+2. Una vez que tengo el Fork en mi GITHUB me lo clono y esto me lo bajo a mi repositorio local. COn esto ya puedo empezar a trabajar sobre este proyecto (OJO!)
+
+3. Agrego un nuevo fichero a mi clone (LOCAL)
+
+```
+git add .
+git commit -m "Mi primer commit a un proyecto clone de un fork"
+git push
+```
+
+Esto se ha subido a __mi repositorio__ 
+
+4. Ahora yo puedo solicitar que lo que subí a mi repositorio esté disponible en el repositorio a partir del cual hice el __FORK__
+
+
+## PULL Request
+
+El próximo paso es crear una __PULL REQUEST__
+
+esto se hace desde github, creao un pull request y pongo desde que repo a cual quiero que se envie el cambio.
+
+5. En el repositorio original aparece un __PULL Request__ y el revisor decide si trae o no a su repositorio el cambio.
+    * puede aprobarlo
+    * dejar un comentario
+    * denegarlo
+
+6. Finalmente despues de ver que no hay conflictos hacemos __MERGE PULL REQUEST__
+
